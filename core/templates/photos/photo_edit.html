@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit photo{% endblock %}
+
+
+{% block content %}
+
+<h1 align="center">Edit photo</h1>
+<br>
+<div style="width: 40%; margin: 0 auto;">
+    <form method="post" enctype="multipart/form-data">
+
+        <div class="form-group">
+            <label for="image">Upload image:</label>
+            <input class="form-control-file" type="file" name="image"><strong>Current image:</strong> {{ photo.image }}</input>
+        </div>
+    
+        {% if categories.count() != 0 %}
+        <div class="form-group">
+            <label for="category-choose">Choose category:</label>
+    
+            <select class="form-control" name="category-choose" id="category-choose">
+            <option value="{{ photo.category.name }}" hidden selected>{{ photo.category.name }}</option>
+            {% for category in categories %}
+            <option value="{{ category.name }}">{{ category.name }}</option>
+            {% endfor %}
+            </select>
+        </div>
+        {% else %}
+        <p>No categories to choose yet. Create a new one.</p>
+        {% endif %}
+        <div class="form-group">
+            <label for="category-create">Create a new category:</label>
+            <input class="form-control" type="text" id="category-create" name="category-create">
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea class="form-control" name="description" rows="5" cols="50" >{{ photo.description }}</textarea>
+        </div>
+        
+        <br>
+        <button class="btn btn-primary btn-block" type="submit">Save changes</button>
+    </form>
+</div>
+
+
+{% endblock %}

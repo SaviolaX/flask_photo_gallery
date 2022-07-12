@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Photos{% endblock %}
+
+
+{% block content %}
+
+<br>
+<h1 align="center">Photo page</h1>
+
+<br>
+
+<div class="container">
+    <div align="center">
+        <img src="https://flask-photo-gallery.s3.eu-central-1.amazonaws.com/{{ photo.image }}" style="width: 1000px; height: 600px;" alt="">
+    </div>
+
+    <dir>
+        <small style="float: right; margin-top: 3px;">{{ photo.created_at.strftime('%h-%m-%Y') }}</small>
+        <h5>Description:</h5>
+        <hr>
+        <p>{{ photo.description }}</p>
+    </dir>
+
+    <div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+<!-- <div style="display: inline-block; padding: 5px; border: 1px solid lightgrey; border-radius: 10px; margin: 0 5px;">
+  <img src="{{ url_for('static', filename='images/' + photo.image) }}" style="width: 400px; height: 200px; object-fit: cover; border-radius: 10px;">
+
+  <div style="padding-top: 10px; width: 400px; display: flex; justify-content: space-between;">
+    <div>
+      {% if photo.description|length >= 40 %}
+        <p align="center">{{ photo.description[:30] }}...</p>
+      {% else %}
+        <p align="center">{{ photo.description }}</p>
+      {% endif %}
+    </div>
+    <div class="dropdown">
+      <button style="border: none; background: white;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        &#x22EE;
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="{{ url_for('photos.photo_edit', photo_id=photo.id) }}">Edit</a>
+        <a class="dropdown-item" href="{{ url_for('photos.photo_delete', photo_id=photo.id) }}">Delete</a>
+      </div>
+    </div>
+  </div>
+  <div style="width: 400px;">
+    <a href="{{ url_for('photos.photo_detail', photo_id=photo.id) }}" class="btn btn-secondary" style="width: 100%;">View</a>
+  </div>
+  <div style="width: 400px;">
+    <small>Category: {{ photo.category.name }}</small>
+    <small style="float: right; margin-top: 3px;">{{ photo.created_at.strftime('%h-%m-%Y') }}</small>
+  </div>
+</div> -->

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Categories{% endblock %}
+
+
+{% block content %}
+
+<h1 align="center">Categories</h1>
+<br>
+<div style="width: 40%; margin: 0 auto;">
+    <ul class="list-group">
+        {% for category in categories %}
+            <li align="center" class="list-group-item">{{ category.name }}
+                <span style="float: right;">
+                    <a style="text-decoration: none;" href="{{ url_for('photos.category_delete', category_id=category.id) }}">&#128465;</a>
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+{% endblock %}

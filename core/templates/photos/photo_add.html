@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Add photo{% endblock %}
+
+
+{% block content %}
+
+<h1 align="center">Add photo</h1>
+<br>
+<div style="width: 40%; margin: 0 auto;">
+    <form method="post" enctype="multipart/form-data">
+
+        <div class="form-group">
+            <label for="image">Upload image:</label>
+            <input type="file" name="image" id="image" class="form-control-file">
+        </div>
+        {% if categories.count() != 0 %}
+        <div class="form-group">
+            <label for="category-choose">Choose category:</label>
+
+            <select name="category-choose" id="category-choose" class="form-control">
+            {% for category in categories %}
+            <option value="{{ category.name }}">{{ category.name }}</option>
+            {% endfor %}
+            </select>
+        </div>
+        {% else %}
+        <p>No categories to choose yet. Create a new one.</p>
+        {% endif %}
+        <div class="form-group">
+            <label for="category-create">Create a new category:</label>
+            <input type="text" id="category-create" name="category-create" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description"
+                rows="5" cols="33" class="form-control"></textarea>
+        </div>
+        
+        <br>
+        <button class="btn btn-primary btn-block" type="submit">Add</button>
+    </form>
+</div>
+
+{% endblock %}
