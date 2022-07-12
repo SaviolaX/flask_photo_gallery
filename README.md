@@ -8,6 +8,7 @@
 - PostgreSQL
 - SQLAlchemy
 - AWS
+- Bootstrap 5
 
 ***Created for educational purposes.***
 
